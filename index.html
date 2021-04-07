@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="input-container">
+        <input type="number" id="inp1" value="1000">
+        <input type="number" id="inp2" value="10">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="exampleRadios1" value="0" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Генератор чисел по умолчанию
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radio1" id="exampleRadios2" value="1">
+            <label class="form-check-label" for="exampleRadios2">
+                Простые конгруэнции
+            </label>
+        </div>
+        <button id="inp-btn">Давай</button>
+    </div>
+    <div class="output-container">
+        <div id="output"></div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
