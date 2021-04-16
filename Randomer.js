@@ -30,14 +30,12 @@ class Randomer {
         return ((a * data.prevElem) % p);
     }
 
+    //done
     static nextTrapezoidal(data = {min:0, max:1}) {
-        let firstNumber = Randomer.nextDefaultRand({min:1, max:20000});
-        let secondNumber = Randomer.nextDefaultRand({min:5000, max:32000});
-        //min 5001
-        //max 42000
+        let l1 = (data.max - data.min)/4;
+        let firstNumber = Randomer.nextDefaultRand({min:data.min, max:data.min + l1});
+        let secondNumber = Randomer.nextDefaultRand({min:data.min, max:data.max/2 + l1});
         return firstNumber + secondNumber;
-        //return (((firstNumber + secondNumber) - 5000) / 37000) * (data.max - data.min) + data.min;
-
     }
 
     static nextGauss(data = {min:0, max:1}) {
