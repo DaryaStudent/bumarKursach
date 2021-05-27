@@ -65,4 +65,12 @@ class Randomer {
     static nextExp(data = {min:0, max:1, lambda: 1}){
         return -Math.log(Math.random() * (data.max - data.min) + data.min)/data.lambda;
     }
+
+    static nextErlang(data = {min:0, max:1, order: 1, lambda: 1}){
+        let randErlang = -Math.log(Math.random()) / data.lambda;
+        for (let index = 0; index < data.order - 1; index++) {
+            randErlang += -Math.log(Math.random()) / data.lambda;
+        }
+        return randErlang;
+    }
 }

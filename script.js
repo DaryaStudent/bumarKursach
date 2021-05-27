@@ -8,6 +8,7 @@ const randFuncEnum = {
     'Gauss' : Randomer.nextGauss,
     'Muller' : Randomer.nextMuller,
     'Exp' : Randomer.nextExp,
+    'Erlang' : Randomer.nextErlang,
 }
 
 
@@ -19,6 +20,12 @@ document.getElementById('funcSelect').onchange = function(e) {
     } else {
         document.getElementById('lambda-wrapper').style.display = 'none';
     }
+
+    if (e.target.value === 'Erlang') {
+        document.getElementById('order-wrapper').style.display = 'block';
+    } else {
+        document.getElementById('order-wrapper').style.display = 'none';
+    }
 }
 
 button.onclick = function () {
@@ -27,11 +34,13 @@ button.onclick = function () {
     let methodName = document.getElementById('funcSelect').value;
 
     let lambda = document.getElementById('lambda').value;
+    let order = document.getElementById('order').value;
 
     let randData = {
         min: 0,
         max: 1,
-        lambda: lambda
+        lambda: lambda,
+        order: order
     }
 
     let groups = calcResMassive(numsCnt, groupsCnt, methodName, randData);
