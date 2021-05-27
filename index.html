@@ -35,11 +35,26 @@
             <option value="Gauss">Гаусса</option>
             <option value="Muller">Мюллера</option>
         </optgroup>
+        <optgroup label="Экспон">
+            <option value="Exp">Экспоненциальное</option>
+<!--            <option value="Muller">Гиперэкспоненциальное</option>-->
+        </optgroup>
     </select>
 
+    <div id="lambda-wrapper" style="display: none">
+        <label for="lambda">Лямбда:</label>
+        <input type="number" id="lambda">
+    </div>
+    <br>
     <button id="button">Сгенерировать</button>
+    <br>
+
+
+<!--    <canvas width="500" height="500" id="canvas"></canvas>-->
+<!--    <button id="canvas-btn">рисуй</button>-->
 
     <script src="Randomer.js"></script>
+    <script src="SkladRenderer.js"></script>
     <script src="Renderer.js"></script>
     <script src="script.js"></script>
 </body>

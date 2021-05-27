@@ -7,18 +7,34 @@ const randFuncEnum = {
     'Trapezoidal' : Randomer.nextTrapezoidal,
     'Gauss' : Randomer.nextGauss,
     'Muller' : Randomer.nextMuller,
+    'Exp' : Randomer.nextExp,
 }
 
 
 let button = document.getElementById('button');
+
+document.getElementById('funcSelect').onchange = function(e) {
+    if (e.target.value === 'Exp') {
+        document.getElementById('lambda-wrapper').style.display = 'block';
+    } else {
+        document.getElementById('lambda-wrapper').style.display = 'none';
+    }
+}
 
 button.onclick = function () {
     let numsCnt = document.getElementById('numbersCnt').value;
     let groupsCnt = document.getElementById('groupsCnt').value;
     let methodName = document.getElementById('funcSelect').value;
 
+    let lambda = document.getElementById('lambda').value;
 
-    let groups = calcResMassive(numsCnt, groupsCnt, methodName);
+    let randData = {
+        min: 0,
+        max: 1,
+        lambda: lambda
+    }
+
+    let groups = calcResMassive(numsCnt, groupsCnt, methodName, randData);
     console.log(groups);
 
     let maxGroup = groups[0];
@@ -37,16 +53,11 @@ button.onclick = function () {
     Renderer.renderData(data);
 }
 
-function calcResMassive(numsCnt, groupsCnt, randName, min = 0, max = 1){
+function calcResMassive(numsCnt, groupsCnt, randName, randData){
 
     let randNext = randFuncEnum[randName];
 
     //randConfig//////////////////
-    let randData = {
-        min: min,
-        max: max,
-    };
-
     if (randName === 'SimpleCongruence' || randName === 'LinearCongruence') {
         randData.prevElem = 1;
     }
@@ -85,3 +96,39 @@ function calcResMassive(numsCnt, groupsCnt, randName, min = 0, max = 1){
 
     return groups;
 }
+
+
+
+// SkladRenderer.setLayout(document.getElementById('canvas'));
+//
+// document.getElementById('canvas-btn').onclick = function () {
+//     SkladRenderer.render(obj);
+// }
+//
+// let graphics = {
+//     1 : {
+//         graphic : [1,2,3,4,5],
+//         color : '#0000FF'
+//     },
+//     2 : {
+//         graphic : [2,3,4,5,6],
+//         color : '#FF0000'
+//     },
+//     3 : {
+//         graphic : [3,4,5,6,7],
+//         color : '#00FF00'
+//     },
+//     4 : {
+//         graphic : [4,5,6,7,8],
+//         color : '#FF00FF'
+//     },
+//     5 : {
+//         graphic : [5,6,7,8,9],
+//         color : '#000000'
+//     },
+// }
+// let obj = {
+//     maxY: 9,
+//     maxX: 5,
+//     graphics : graphics
+// }

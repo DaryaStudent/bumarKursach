@@ -61,4 +61,8 @@ class Randomer {
 
         return mx + sigma * randCalculatedNormal;
     }
+
+    static nextExp(data = {min:0, max:1, lambda: 1}){
+        return -Math.log(Math.random() * (data.max - data.min) + data.min)/data.lambda;
+    }
 }
