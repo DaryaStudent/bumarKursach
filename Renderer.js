@@ -17,8 +17,10 @@ class Renderer {
         //rendering
         let groups = data.groups;
         for (let group of groups) {
-            let column = Renderer._createColumnDomElem(group / data.maxY * Renderer.layoutHeight);
-            Renderer.layout.appendChild(column);
+            if (!isNaN(group)) {
+                let column = Renderer._createColumnDomElem(group / data.maxY * Renderer.layoutHeight);
+                Renderer.layout.appendChild(column);
+            }
         }
     }
 
