@@ -73,4 +73,8 @@ class Randomer {
         }
         return randErlang;
     }
+
+    static nextHyperExp(data = {min:0, max:1, lambda: 1}){
+        return Math.pow(-Math.log(Math.random()) / data.lambda, 1.3);
+    }
 }

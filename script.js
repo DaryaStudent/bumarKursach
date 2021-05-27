@@ -1,4 +1,3 @@
-
 const randFuncEnum = {
     'DefaultRand' : Randomer.nextDefaultRand,
     'SimpleCongruence' : Randomer.nextSimpleCongruence,
@@ -9,13 +8,11 @@ const randFuncEnum = {
     'Muller' : Randomer.nextMuller,
     'Exp' : Randomer.nextExp,
     'Erlang' : Randomer.nextErlang,
+    'HyperExp' : Randomer.nextHyperExp,
 }
 
-
-let button = document.getElementById('button');
-
 document.getElementById('funcSelect').onchange = function(e) {
-    if (e.target.value === 'Exp') {
+    if (e.target.value === 'Exp' || e.target.value === 'HyperExp') {
         document.getElementById('lambda-wrapper').style.display = 'block';
     } else {
         document.getElementById('lambda-wrapper').style.display = 'none';
@@ -28,7 +25,7 @@ document.getElementById('funcSelect').onchange = function(e) {
     }
 }
 
-button.onclick = function () {
+document.getElementById('button').onclick = function () {
     let numsCnt = document.getElementById('numbersCnt').value;
     let groupsCnt = document.getElementById('groupsCnt').value;
     let methodName = document.getElementById('funcSelect').value;
@@ -44,7 +41,6 @@ button.onclick = function () {
     }
 
     let groups = calcResMassive(numsCnt, groupsCnt, methodName, randData);
-    console.log(groups);
 
     let maxGroup = groups[0];
     for (let group of groups) {
@@ -91,8 +87,6 @@ function calcResMassive(numsCnt, groupsCnt, randName, randData){
     for (let i = 0; i < groupsCnt; i++) {
         groups[i] = 0;
     }
-
-    console.log(randNums);
 
     let groupIndex = 0;
     for (let i = 0; i < numsCnt; i++) {
