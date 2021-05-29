@@ -105,17 +105,17 @@ class SkladRenderer {
     }
 
     static renderGraphics(data){
+        console.log(data)
         for (let product in data.graphics) {
             this.renderGraphic(data.graphics[product])
         }
-
     }
 
     static renderGraphic(data){
+
         let ctx = this.ctx;
         // ctx.fillStyle = data.color;
         ctx.strokeStyle = data.color;
-        console.log(data.color)
         ctx.lineWidth = 1.0;
 
         let prevX = this.realGraphicBotX;
@@ -142,6 +142,6 @@ class SkladRenderer {
     }
 
     static clearLayout(){
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.ctx.clearRect(0, 0, this.layout.width, this.layout.height);
     }
 }

@@ -40,7 +40,7 @@ document.getElementById('button').onclick = function () {
         order: order
     }
 
-    let groups = calcResMassive(numsCnt, groupsCnt, methodName, randData);
+    let groups = Sprending.calcResMassive(numsCnt, groupsCnt, methodName, randData);
 
     let maxGroup = groups[0];
     for (let group of groups) {
@@ -58,55 +58,87 @@ document.getElementById('button').onclick = function () {
     Renderer.renderData(data);
 }
 
-function calcResMassive(numsCnt, groupsCnt, randName, randData){
-
-    let randNext = randFuncEnum[randName];
-
-    //randConfig//////////////////
-    if (randName === 'SimpleCongruence' || randName === 'LinearCongruence') {
-        randData.prevElem = 1;
+document.getElementById('theme-selector').onchange = function(e) {
+    switch (e.target.value) {
+        case 'sklad':
+            document.getElementById('sklad-wrapper').style.display = 'block';
+            document.getElementById('sprending-wrapper').style.display = 'none';
+            document.getElementById('proc-wrapper').style.display = 'none';
+            break;
+        case 'spreding':
+            document.getElementById('sprending-wrapper').style.display = 'block';
+            document.getElementById('sklad-wrapper').style.display = 'none';
+            document.getElementById('proc-wrapper').style.display = 'none';
+            break;
+        case 'proc':
+            document.getElementById('proc-wrapper').style.display = 'block';
+            document.getElementById('sklad-wrapper').style.display = 'none';
+            document.getElementById('sprending-wrapper').style.display = 'none';
+            break;
     }
-    //randConfigEnd///////////////
-
-    let prevRand = randNext(randData);
-    let randNums = [prevRand];
-    min = prevRand;
-    max = prevRand;
-    randData.prevElem = prevRand;
-
-    for (let i = 1; i < numsCnt; i++) {
-        let curRandElem = randNext(randData);
-        randData['prevElem'] = curRandElem;
-        randNums.push(curRandElem);
-        max = max < curRandElem ? curRandElem : max;
-        min = min > curRandElem ? curRandElem : min;
-    }
-
-    let groupSize = (max - min) / groupsCnt;
-    let groups = [];
-    for (let i = 0; i < groupsCnt; i++) {
-        groups[i] = 0;
-    }
-
-    let groupIndex = 0;
-    for (let i = 0; i < numsCnt; i++) {
-        groupIndex = Math.floor((randNums[i] - min) / groupSize);
-        if (groupIndex === groupsCnt) {
-            groupIndex--;
-        }
-        groups[groupIndex]++;
-    }
-
-    return groups;
 }
 
 
+document.getElementById('canvas-btn').onclick = function () {
+    let maxClientRequest = [
+        [0,210,260,310,360,410],
+        [48, 0, 152, 204, 256, 308],
+        [32, 60, 0, 116, 144, 172],
+        [20, 38, 56, 0, 92, 110],
+        [12, 17, 22, 27, 0, 37],
+        [5, 10, 15, 20, 25, 0],
+    ]
 
-// SkladRenderer.setLayout(document.getElementById('canvas'));
-//
-// document.getElementById('canvas-btn').onclick = function () {
-//     SkladRenderer.render(obj);
-// }
+    let minCntProduct = [
+        Number.parseInt(document.getElementById('minProd1').value),
+        Number.parseInt(document.getElementById('minProd2').value),
+        Number.parseInt(document.getElementById('minProd3').value),
+        Number.parseInt(document.getElementById('minProd4').value),
+        Number.parseInt(document.getElementById('minProd5').value),
+        Number.parseInt(document.getElementById('minProd6').value),
+    ]
+
+    let buyCntProd = [
+        Number.parseInt(document.getElementById('buyProd1').value),
+        Number.parseInt(document.getElementById('buyProd2').value),
+        Number.parseInt(document.getElementById('buyProd3').value),
+        Number.parseInt(document.getElementById('buyProd4').value),
+        Number.parseInt(document.getElementById('buyProd5').value),
+        Number.parseInt(document.getElementById('buyProd6').value),
+    ]
+
+    let startCntProd = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ]
+
+    let method = randFuncEnum[document.getElementById('skladFuncSelect').value];
+
+    let days = 90;
+
+    let obj = Sklad.simulate(startCntProd, minCntProduct, buyCntProd, maxClientRequest, days, method)
+    console.log(obj)
+
+    document.getElementById('coef').innerText = obj.sumSells/(obj.sumSells+obj.sumLosses)*100 + '%';
+
+    SkladRenderer.setLayout(document.getElementById('sells-canvas'));
+    SkladRenderer.render({
+        maxY: obj.maxSellsY,
+        maxX: obj.maxX,
+        graphics : obj.graphicsSells,
+    });
+
+    SkladRenderer.setLayout(document.getElementById('looses-canvas'));
+    SkladRenderer.render({
+        maxY: obj.maxLoosesY,
+        maxX: obj.maxX,
+        graphics : obj.graphicsLooses,
+    });
+}
 //
 // let graphics = {
 //     1 : {

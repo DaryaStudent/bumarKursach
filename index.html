@@ -9,6 +9,16 @@
 </head>
 <body>
 
+<select name="" id="theme-selector">
+    <option value="spreding">Распределения</option>
+    <option value="sklad">Симуляция склада</option>
+    <option value="proc">Процессор Монте-Карло</option>
+</select>
+
+<br>
+<br>
+
+<div id="sprending-wrapper">
     <div class="graphicLayout" id="graphicLayout">
     </div>
 
@@ -39,7 +49,7 @@
             <option value="Exp">Экспоненциальное</option>
             <option value="HyperExp">ГиперЭкспоненциальное</option>
             <option value="Erlang">Эрланга</option>
-<!--            <option value="Muller">Гиперэкспоненциальное</option>-->
+            <!--            <option value="Muller">Гиперэкспоненциальное</option>-->
         </optgroup>
     </select>
 
@@ -56,12 +66,86 @@
     <br>
     <button id="button">Сгенерировать</button>
     <br>
+</div>
+
+<div id="sklad-wrapper" style="display: none">
+    <div class="sklad-input-wrapper">
+        <div>
+            <span>Порог дозакупки</span>
+            <br>
+            <label>Продукт 1:</label>
+            <input id = 'minProd1' value="1000">
+            <br>
+            <label>Продукт 2:</label>
+            <input id = 'minProd2' value="500">
+            <br>
+            <label>Продукт 3:</label>
+            <input id = 'minProd3' value="400">
+            <br>
+            <label>Продукт 4:</label>
+            <input id = 'minProd4' value="200">
+            <br>
+            <label>Продукт 5:</label>
+            <input id = 'minProd5' value="150">
+            <br>
+            <label>Продукт 6:</label>
+            <input id = 'minProd6' value="100">
+        </div>
+        <div>
+            <span>Дозакупка</span>
+            <br>
+            <label>Продукт 1:</label>
+            <input id = 'buyProd1' value="800"><div class="productMarker" style="background-color: #0000FF"></div>
+            <br>
+            <label>Продукт 2:</label>
+            <input id = 'buyProd2' value="450"><div class="productMarker" style="background-color: #FF0000"></div>
+            <br>
+            <label>Продукт 3:</label>
+            <input id = 'buyProd3' value="400"><div class="productMarker" style="background-color: #00FF00"></div>
+            <br>
+            <label>Продукт 4:</label>
+            <input id = 'buyProd4' value="200"><div class="productMarker" style="background-color: #FF00FF"></div>
+            <br>
+            <label>Продукт 5:</label>
+            <input id = 'buyProd5' value="125"><div class="productMarker" style="background-color: #FFFF00"></div>
+            <br>
+            <label>Продукт 6:</label>
+            <input id = 'buyProd6' value="100"><div class="productMarker" style="background-color: #000000"></div>
+        </div>
+    </div>
+    <label for="skladFuncSelect">Функция распределения закупок:</label>
+    <select name="skladFuncSelect" id="skladFuncSelect">
+            <option value="DefaultRand">По умолчанию</option>
+            <option value="Triangle">Треугольное</option>
+            <option value="Gauss">Нормальное Гаусса</option>
+    </select>
+    <button id="canvas-btn">Рассчитать</button>
+    <div>Процент продаж: <span id="coef"></span></div>
+    <div class="canvases-wrapper">
+        <div id="sells-canvas-wrapper">
+            <div>
+                График продаж:
+            </div>
+            <canvas width="500" height="500" id="sells-canvas"></canvas>
+        </div>
+        <div id="looses-canvas-wrapper">
+            <div>
+                График потерь:
+            </div>
+            <canvas width="500" height="500" id="looses-canvas"></canvas>
+        </div>
+    </div>
+</div>
+
+<div id="proc-wrapper" style="display: none">
+123123131
+</div>
 
 
-<!--    <canvas width="500" height="500" id="canvas"></canvas>-->
-<!--    <button id="canvas-btn">рисуй</button>-->
 
     <script src="Randomer.js"></script>
+    <script src="Sprending.js"></script>
+    <script src="Sklad.js"></script>
     <script src="SkladRenderer.js"></script>
     <script src="Renderer.js"></script>
     <script src="script.js"></script>

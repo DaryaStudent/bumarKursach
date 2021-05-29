@@ -41,11 +41,11 @@ class Randomer {
     static nextGauss(data = {min:0, max:1}) {
         let n = 12;
         let sigma = Math.sqrt(12 / n);
-        let randStandard = Randomer.nextDefaultRand();
+        let randStandard = Randomer.nextDefaultRand({min:0, max:1});
 
         for (let index = 0; index < n; index++)
         {
-            randStandard += Randomer.nextDefaultRand();
+            randStandard += Randomer.nextDefaultRand({min:0, max:1});
         }
 
         return sigma * (randStandard - (n / 2));

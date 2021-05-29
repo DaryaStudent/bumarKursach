@@ -14,6 +14,49 @@
     /*margin: 1px;*/
 }
 
-#canvas {
+#sells-canvas, #looses-canvas {
     border: 1px solid black;
+}
+
+.sklad-input-wrapper{
+    display: flex;
+}
+
+.sklad-input-wrapper>div{
+    margin: 10px;
+    margin-left: 0px;
+}
+
+.sklad-input-wrapper>div>span{
+    font-weight: 1000;
+    font-size: 20px;
+}
+
+#theme-selector{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#sklad-wrapper{
+    margin-left: 20px;
+}
+
+#sprending-wrapper{
+    margin-left: 20px;
+}
+
+.productMarker{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: darkgrey;
+    margin: 0px 0px 0px 4px;
+}
+
+.canvases-wrapper{
+    display: flex;
+}
+
+.canvases-wrapper>div{
+    margin:10px
 }
