@@ -106,7 +106,7 @@ document.getElementById('canvas-btn').onclick = function () {
 
     let method = randFuncEnum[document.getElementById('skladFuncSelect').value];
 
-    let days = 90;
+    let days = Number.parseInt(document.getElementById('days').value);
 
     let obj = Sklad.simulate(startCntProd, minCntProduct, buyCntProd, maxClientRequest, days, method)
     console.log(obj)
