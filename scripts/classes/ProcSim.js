@@ -28,7 +28,7 @@ class ProcSim{
         let endOfScreen = -1;
         let endOfType = -1;
 
-        let isTypoReady = true;
+        let isKeyBoardReady = true;
 
         let firstTypeTask = false;
         let secondTypeTask = false;
@@ -52,10 +52,9 @@ class ProcSim{
                 let task = r.Next(1, 3);
 
                 if (task === 1) firstTypeTasks.Enqueue(1);
-
                 else secondTypeTasks.Enqueue(1);
 
-                isTypoReady = true;
+                isKeyBoardReady = true;
             }
 
             if (i === endOfPrint)
@@ -69,7 +68,7 @@ class ProcSim{
 
                     let time = r.Next(1, maxTimePrint);
                     endOfPrint = i + time;
-                    sumTimePrinter += time;
+                    sumTimePrinter += Math.min(time, simTime-i);
                     koefTimePrinter++;
                 }
             }
@@ -85,7 +84,7 @@ class ProcSim{
 
                     let time = r.Next(1, maxTimeMonitor);
                     endOfScreen = i + time;
-                    sumTimeMonitor += time;
+                    sumTimeMonitor += Math.min(time, simTime-i);
                     koefTimeMonitor++;
                 }
             }
@@ -108,7 +107,7 @@ class ProcSim{
 
                         let time = r.Next(1, maxTimeMonitor);
                         endOfScreen = i + time;
-                        sumTimeMonitor += time;
+                        sumTimeMonitor += Math.min(time, simTime-i);
 
                         koefTimeMonitor++;
                     }
@@ -125,7 +124,7 @@ class ProcSim{
 
                         let time = r.Next(1, maxTimePrint);
                         endOfPrint = i + time;
-                        sumTimePrinter += time;
+                        sumTimePrinter += Math.min(time, simTime-i);
 
                         koefTimePrinter++;
                     }
@@ -150,7 +149,7 @@ class ProcSim{
 
                         let time = r.Next(1, maxTimeMonitor);
                         endOfScreen = i + time;
-                        sumTimeMonitor += time;
+                        sumTimeMonitor += Math.min(time, simTime-i);
 
                         koefTimeMonitor++;
                     }
@@ -166,7 +165,7 @@ class ProcSim{
 
                         let time = r.Next(1, maxTimePrint);
                         endOfPrint = i + time;
-                        sumTimePrinter += time;
+                        sumTimePrinter += Math.min(time, simTime-i);
 
                         koefTimePrinter++;
                     }
@@ -183,7 +182,7 @@ class ProcSim{
 
                     let time = r.Next(1, maxTimeProc);
                     endOfFirst = i + time;
-                    sumTimeProcessor += time;
+                    sumTimeProcessor += Math.min(time, simTime-i);
 
                     koefTimeProcessor++;
                     isFirstMachineWork = true;
@@ -196,7 +195,7 @@ class ProcSim{
                     {
                         let time = r.Next(1, maxTimeProc);
                         endOfFirst = i + time;
-                        sumTimeProcessor += time;
+                        sumTimeProcessor += Math.min(time, simTime-i);
 
                         koefTimeProcessor++;
                         isFirstMachineWork = true;
@@ -213,7 +212,7 @@ class ProcSim{
 
                     let time = r.Next(1, maxTimeProc);
                     endOfSecond = i + time;
-                    sumTimeProcessor += time;
+                    sumTimeProcessor += Math.min(time, simTime-i);
 
                     koefTimeProcessor++;
                     isSecondMachineWork = true;
@@ -226,7 +225,7 @@ class ProcSim{
                     {
                         let time = r.Next(1, maxTimeProc);
                         endOfSecond = i + time;
-                        sumTimeProcessor += time;
+                        sumTimeProcessor += Math.min(time, simTime-i);
 
                         koefTimeProcessor++;
                         isSecondMachineWork = true;
@@ -235,9 +234,9 @@ class ProcSim{
                 }
             }
 
-            if (isStartOfPrint(r) && isTypoReady)
+            if (isStartOfPrint(r) && isKeyBoardReady)
             {
-                isTypoReady = false;
+                isKeyBoardReady = false;
 
                 let time = r.Next(1, maxTimeKeyBoard);
                 endOfType = i + time;
@@ -266,7 +265,7 @@ class ProcSim{
                 prostoyProcessor2++;
             }
 
-            if (isTypoReady)
+            if (isKeyBoardReady)
             {
                 prostoyClaviatura++;
             }
@@ -275,7 +274,7 @@ class ProcSim{
         return [
             kolichestvoZadach,
             sumTimeClaviatura / simTime,
-            sumTimeProcessor / simTime,
+            sumTimeProcessor / simTime / 2,
             sumTimePrinter / simTime,
             sumTimeMonitor / simTime,
             sumTimeClaviatura,
@@ -283,7 +282,7 @@ class ProcSim{
             sumTimePrinter,
             sumTimeMonitor,
             prostoyClaviatura,
-            simTime - sumTimeProcessor,
+            simTime*2 - sumTimeProcessor,
             prostoyPrinter,
             prostoyMonitor,
             sumFirstTypeTask,
