@@ -60,3 +60,27 @@
 .canvases-wrapper>div{
     margin:10px
 }
+
+.sim-answers{
+    margin-top: 10px;
+    display: inline-flex;
+    justify-content: stretch;
+    box-shadow: inset 0 0 10px -6px rgba(50, 50, 50, 1);
+}
+
+.sim-answers > div {
+    box-shadow:  0 0 10px -6px rgba(50, 50, 50, 1);
+    padding: 10px;
+}
+.sim-answers > div > div {
+    margin-bottom: 5px;
+}
+
+#proc-wrapper{
+    margin-left: 20px;
+}
+
+#startSim{
+    margin-top: 15px;
+    font-size: 15px;
+}

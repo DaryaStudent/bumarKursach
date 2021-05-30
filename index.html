@@ -138,23 +138,126 @@
 </div>
 
 <div id="proc-wrapper" style="display: none">
-    <label>Длительность моделирования:</label>
-    <input id = 'simTime' value="100">
-    <br>
-    <label>Максимальное время работы клавиатуры:</label>
-    <input id = 'maxTimeKeyBoard' value="10">
-    <br>
-    <label>Максимальное время работы процессора:</label>
-    <input id = 'maxTimeCpu' value="10">
-    <br>
-    <label>Максимальное время работы монитора:</label>
-    <input id = 'maxTimeMonitor' value="10">
-    <br>
-    <label>Максимальное время работы принтера:</label>
-    <input id = 'maxTimePrint' value="10">
+
+    <div class="sim-answers">
+        <div class="key-answers">
+            <div>
+                <label>Длительность моделирования:</label>
+                <br>
+                <input id = 'simTime' value="100">
+            </div>
+            <br>
+            <div>
+                <label>Кол-во решенных задач:</label>
+                <br>
+                <input type="text" id="kolichestvoZadach" disabled>
+            </div>
+            <div>
+                <label>Кол-во решенных задач первого типа:</label>
+                <br>
+                <input type="text" id="sumFirstTypeTask" disabled>
+            </div>
+            <div>
+                <label>Кол-во решенных задач второго типа:</label>
+                <br>
+                <input type="text" id="sumSecondTypeTask" disabled>
+            </div>
+        </div>
+        <div class="cpu-answers">
+            <div>
+                <label>Максимальное время работы процессора:</label>
+                <br>
+                <input id = 'maxTimeCpu' value="10">
+            </div>
+            <br>
+            <div>
+                <label>Эффективность процессора:</label>
+                <br>
+                <input type="text" id="koefTimeProcessor" disabled>
+            </div>
+            <div>
+                <label>Время работы процессора:</label>
+                <br>
+                <input type="text" id="sumTimeProcessor" disabled>
+            </div>
+            <div>
+                <label>Неактивное время процессора:</label>
+                <br>
+                <input type="text" id="prostoyProcessor" disabled>
+            </div>
+        </div>
+        <div class="printer-answers">
+            <div>
+                <label>Максимальное время работы принтера:</label>
+                <br>
+                <input id = 'maxTimePrint' value="10">
+            </div>
+            <br>
+            <div>
+                <label>Эффективность принтера:</label>
+                <br>
+                <input type="text" id="koefTimePrinter" disabled>
+            </div>
+            <div>
+                <label>Время работы принтера:</label>
+                <br>
+                <input type="text" id="sumTimePrinter" disabled>
+            </div>
+            <div>
+                <label>Неактивное время принтера:</label>
+                <br>
+                <input type="text" id="prostoyPrinter" disabled>
+            </div>
+        </div>
+        <div class="monitor-answers">
+            <div>
+                <label>Максимальное время работы монитора:</label>
+                <br>
+                <input id = 'maxTimeMonitor' value="10">
+            </div>
+            <br>
+            <div>
+                <label>Эффективность монитора:</label>
+                <br>
+                <input type="text" id="koefTimeMonitor" disabled>
+            </div>
+            <div>
+                <label>Время работы монитора:</label>
+                <br>
+                <input type="text" id="sumTimeMonitor" disabled>
+            </div>
+            <div>
+                <label>Неактивное время монитора:</label>
+                <br>
+                <input type="text" id="prostoyMonitor" disabled>
+            </div>
+        </div>
+        <div class="keyBoard-answers">
+            <div>
+                <label>Максимальное время работы клавиатуры:</label>
+                <br>
+                <input id = 'maxTimeKeyBoard' value="10">
+            </div>
+            <br>
+            <div>
+                <label>Эффективность клавиатуры:</label>
+                <br>
+                <input type="text" id="koefTimeClaviatura" disabled>
+            </div>
+            <div>
+                <label>Время работы клавиатуры:</label>
+                <br>
+                <input type="text" id="sumTimeClaviatura" disabled>
+            </div>
+            <div>
+                <label>Неактивное время клавиатуры:</label>
+                <br>
+                <input type="text" id="prostoyClaviatura" disabled>
+            </div>
+        </div>
+    </div>
     <br>
     <button id="startSim">Запуск</button>
-
 </div>
 
 

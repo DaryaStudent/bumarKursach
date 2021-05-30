@@ -1,15 +1,3 @@
-const randFuncEnum = {
-    'DefaultRand' : Randomer.nextDefaultRand,
-    'SimpleCongruence' : Randomer.nextSimpleCongruence,
-    'LinearCongruence' : Randomer.nextLinearCongruence,
-    'Triangle' : Randomer.nextTriangle,
-    'Trapezoidal' : Randomer.nextTrapezoidal,
-    'Gauss' : Randomer.nextGauss,
-    'Muller' : Randomer.nextMuller,
-    'Exp' : Randomer.nextExp,
-    'Erlang' : Randomer.nextErlang,
-    'HyperExp' : Randomer.nextHyperExp,
-}
 
 document.getElementById('funcSelect').onchange = function(e) {
     if (e.target.value === 'Exp' || e.target.value === 'HyperExp') {
@@ -148,6 +136,22 @@ document.getElementById('startSim').onclick = function() {
     let simTime = document.getElementById('simTime').value;
 
     let res = ProcSim.start(maxTimeKeyBoard, maxTimeCpu, maxTimePrint, maxTimeMonitor, simTime)
+
+    kolichestvoZadach.value = res[0];
+    koefTimeClaviatura.value = res[1];
+    koefTimeProcessor.value = res[2];
+    koefTimePrinter.value = res[3];
+    koefTimeMonitor.value = res[4];
+    sumTimeClaviatura.value = res[5];
+    sumTimeProcessor.value = res[6];
+    sumTimePrinter.value = res[7];
+    sumTimeMonitor.value = res[8];
+    prostoyClaviatura.value = res[9];
+    prostoyProcessor.value = res[10];
+    prostoyPrinter.value = res[11];
+    prostoyMonitor.value = res[12];
+    sumFirstTypeTask.value = res[13];
+    sumSecondTypeTask.value = res[14];
 
     console.log(res);
 }

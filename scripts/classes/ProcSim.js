@@ -41,26 +41,24 @@ class ProcSim{
         let toMonitor = new Queue();
 
         let r = new Random();
-        let r1 = new Random();
-        let r2 = new Random();
 
         firstTypeTasks.Enqueue(1);
         secondTypeTasks.Enqueue(1);
 
         for (let i = 0; i < simTime; i++)
         {
-            if (i == endOfType)
+            if (i === endOfType)
             {
-                var task = r.Next(1, 3);
+                let task = r.Next(1, 3);
 
-                if (task == 1) firstTypeTasks.Enqueue(1);
+                if (task === 1) firstTypeTasks.Enqueue(1);
 
                 else secondTypeTasks.Enqueue(1);
 
                 isTypoReady = true;
             }
 
-            if (i == endOfPrint)
+            if (i === endOfPrint)
             {
                 isPrinterReady = true;
 
@@ -69,14 +67,14 @@ class ProcSim{
                     toPrinter.Dequeue();
                     isPrinterReady = false;
 
-                    var time = GetTime(maxTimePrint, r1);
+                    let time = r.Next(1, maxTimePrint);
                     endOfPrint = i + time;
                     sumTimePrinter += time;
                     koefTimePrinter++;
                 }
             }
 
-            if (i == endOfScreen)
+            if (i === endOfScreen)
             {
                 isMonitorReady = true;
 
@@ -85,14 +83,14 @@ class ProcSim{
                     toMonitor.Dequeue();
                     isMonitorReady = false;
 
-                    var time = GetTime(maxTimeMonitor, r1);
+                    let time = r.Next(1, maxTimeMonitor);
                     endOfScreen = i + time;
                     sumTimeMonitor += time;
                     koefTimeMonitor++;
                 }
             }
 
-            if (i == endOfFirst)
+            if (i === endOfFirst)
             {
                 isFirstMachineWork = false;
 
@@ -108,7 +106,7 @@ class ProcSim{
                     {
                         isMonitorReady = false;
 
-                        var time = GetTime(maxTimeMonitor, r1);
+                        let time = r.Next(1, maxTimeMonitor);
                         endOfScreen = i + time;
                         sumTimeMonitor += time;
 
@@ -125,7 +123,7 @@ class ProcSim{
                     {
                         isPrinterReady = false;
 
-                        var time = GetTime(maxTimePrint, r1);
+                        let time = r.Next(1, maxTimePrint);
                         endOfPrint = i + time;
                         sumTimePrinter += time;
 
@@ -135,7 +133,7 @@ class ProcSim{
                 }
             }
 
-            if (i == endOfSecond)
+            if (i === endOfSecond)
             {
                 isSecondMachineWork = false;
 
@@ -150,7 +148,7 @@ class ProcSim{
                     {
                         isMonitorReady = false;
 
-                        var time = GetTime(maxTimeMonitor, r1);
+                        let time = r.Next(1, maxTimeMonitor);
                         endOfScreen = i + time;
                         sumTimeMonitor += time;
 
@@ -166,7 +164,7 @@ class ProcSim{
                     {
                         isPrinterReady = false;
 
-                        var time = GetTime(maxTimePrint, r1);
+                        let time = r.Next(1, maxTimePrint);
                         endOfPrint = i + time;
                         sumTimePrinter += time;
 
@@ -183,7 +181,7 @@ class ProcSim{
                 {
                     firstTypeTask = true;
 
-                    var time = GetTime(maxTimeProc, r1);
+                    let time = r.Next(1, maxTimeProc);
                     endOfFirst = i + time;
                     sumTimeProcessor += time;
 
@@ -196,7 +194,7 @@ class ProcSim{
                 {
                     if (firstTypeTasks.Any())
                     {
-                        var time = GetTime(maxTimeProc, r1);
+                        let time = r.Next(1, maxTimeProc);
                         endOfFirst = i + time;
                         sumTimeProcessor += time;
 
@@ -213,7 +211,7 @@ class ProcSim{
                 {
                     secondTypeTask = true;
 
-                    var time = GetTime(maxTimeProc, r1);
+                    let time = r.Next(1, maxTimeProc);
                     endOfSecond = i + time;
                     sumTimeProcessor += time;
 
@@ -226,7 +224,7 @@ class ProcSim{
                 {
                     if (firstTypeTasks.Any())
                     {
-                        var time = GetTime(maxTimeProc, r1);
+                        let time = r.Next(1, maxTimeProc);
                         endOfSecond = i + time;
                         sumTimeProcessor += time;
 
@@ -237,11 +235,11 @@ class ProcSim{
                 }
             }
 
-            if (isStartOfPrint(r2) && isTypoReady)
+            if (isStartOfPrint(r) && isTypoReady)
             {
                 isTypoReady = false;
 
-                var time = GetTime(maxTimeKeyBoard, r1);
+                let time = r.Next(1, maxTimeKeyBoard);
                 endOfType = i + time;
                 sumTimeClaviatura += time;
 
@@ -274,40 +272,6 @@ class ProcSim{
             }
         }
 
-        // textBoxKolichestvoZadach.Text = Convert.ToString(kolichestvoZadach);
-
-        // if (koefTimeClaviatura != 0)
-        // {
-        //     textBoxKoefTimeClaviatura.Text = Convert.ToString(sumTimeClaviatura / dlitelnostRaboti);
-        // }
-
-        // if (koefTimeProcessor != 0)
-        // {
-        //     textBoxKoefTimeProcessor.Text = Convert.ToString(sumTimeProcessor / dlitelnostRaboti); 
-        // }
-
-        // if (koefTimePrinter != 0)
-        // {
-        //     textBoxKoefTimePrinter.Text = Convert.ToString(sumTimePrinter / dlitelnostRaboti); 
-        // }
-
-        // if (koefTimeMonitor != 0)
-        // {
-        //     textBoxKoefTimeMonitor.Text = Convert.ToString(sumTimeMonitor / dlitelnostRaboti); 
-        // }
-
-        // textBoxSumTimeClaviatura.Text = Convert.ToString(sumTimeClaviatura);
-        // textBoxSumTimeProcessor.Text = Convert.ToString(sumTimeProcessor);
-        // textBoxSumTimePrinter.Text = Convert.ToString(sumTimePrinter);
-        // textBoxSumTimeMonitor.Text = Convert.ToString(sumTimeMonitor);
-
-        // textBoxVremyaProstoyaClaviatura.Text = Convert.ToString(prostoyClaviatura);
-        // textBoxVremyaProstoyaPrinter.Text = Convert.ToString(prostoyPrinter);
-        // textBoxVremyaProstoyaMonitor.Text = Convert.ToString(prostoyMonitor);
-
-        // textBoxZadachi1Tip.Text = Convert.ToString(Convert.ToInt32((sumFirstTypeTask / kolichestvoZadach) * 100));
-        // textBoxZadachi2Tip.Text = Convert.ToString(Convert.ToInt32((sumSecondTypeTask / kolichestvoZadach) * 100));
-
         return [
             kolichestvoZadach,
             sumTimeClaviatura / simTime,
@@ -319,10 +283,11 @@ class ProcSim{
             sumTimePrinter,
             sumTimeMonitor,
             prostoyClaviatura,
+            simTime - sumTimeProcessor,
             prostoyPrinter,
             prostoyMonitor,
-            (sumFirstTypeTask / kolichestvoZadach) * 100,
-            (sumSecondTypeTask / kolichestvoZadach) * 100
+            sumFirstTypeTask,
+            sumSecondTypeTask
         ]
     }
 }
@@ -333,7 +298,7 @@ class Queue{
     last = undefined;
     length = 0;
 
-    Enqueue = function(elem) {
+    Enqueue = (elem) => {
         elem = {
             data: elem,
             prev: undefined,
@@ -350,7 +315,7 @@ class Queue{
         this.length++;
     }
 
-    Dequeue = function() {
+    Dequeue = () => {
         if (this.length === 0) {
             return null;
         }
@@ -367,8 +332,8 @@ class Queue{
         return data;
     }
 
-    Any = function() {
-        return this.first ? true : false;
+    Any = () => {
+        return !!this.first;
     }
 }
 
@@ -376,10 +341,6 @@ class Random{
     Next(min, max){
         return Math.round(Math.random() * (max-min + 1) + min - 0.5)
     }
-}
-
-function GetTime(max, r){
-    return r.Next(1, max);
 }
 
 function isStartOfPrint(r){

@@ -1,3 +1,15 @@
+const randFuncEnum = {
+    'DefaultRand' : Randomer.nextDefaultRand,
+    'SimpleCongruence' : Randomer.nextSimpleCongruence,
+    'LinearCongruence' : Randomer.nextLinearCongruence,
+    'Triangle' : Randomer.nextTriangle,
+    'Trapezoidal' : Randomer.nextTrapezoidal,
+    'Gauss' : Randomer.nextGauss,
+    'Muller' : Randomer.nextMuller,
+    'Exp' : Randomer.nextExp,
+    'Erlang' : Randomer.nextErlang,
+    'HyperExp' : Randomer.nextHyperExp,
+}
 class Renderer {
 
     static layout = undefined;
