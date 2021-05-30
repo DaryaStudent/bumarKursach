@@ -153,5 +153,10 @@ document.getElementById('startSim').onclick = function() {
     sumFirstTypeTask.value = res[13];
     sumSecondTypeTask.value = res[14];
 
+    avgTimeClaviatura.value = res[15];
+    avgTimeProcessor.value = res[16];
+    avgTimePrinter.value = res[17];
+    avgTimeMonitor.value = res[18];
+
     console.log(res);
 }
