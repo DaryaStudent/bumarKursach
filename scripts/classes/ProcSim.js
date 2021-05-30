@@ -10,38 +10,30 @@ class ProcSim {
         let sumTimeMonitor = 0.0;
         let monitorTasksCnt = 0;
         let allTasksCnt = 0;
-
         let inactiveTimePrinter = 0;
         let inactiveTimeCpu1 = 0;
         let inactiveTimeCpu2 = 0;
         let inactiveTimeKeyBoard = 0;
         let inactiveTimeMonitor = 0;
-
         let isKeyBoardReady = true;
         let isMonitorReady = true;
         let isPrinterReady = true;
         let isFirstCpuActive = false;
         let isSecondCpuActive = false;
-
         let endTimeOfFirstCpuActive = -1;
         let endTimeOfSecondCpuActive = -1;
         let endTimeOfPrint = -1;
         let endTimeOfScreen = -1;
         let endTimeOfKeyBoard = -1;
-
-
         let firstTypeTask = false;
         let secondTypeTask = false;
         let sumFirstTypeTask = 0.0;
         let sumSecondTypeTask = 0.0;
-
         let firstTypeTaskQueue = new Queue();
         let secondTypeTasksQueue = new Queue();
         let toPrinterTaskQueue = new Queue();
         let toMonitorTaskQueue = new Queue();
-
         let random = new Random();
-
         firstTypeTaskQueue.Enqueue(1);
         secondTypeTasksQueue.Enqueue(1);
 

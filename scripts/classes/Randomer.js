@@ -20,7 +20,6 @@ class Randomer {
         let m = Math.pow(2, 21);
         let a = 325;
         let c = 1337;
-
         return (a * data.prevElem + c) % m;
     }
 
@@ -34,7 +33,7 @@ class Randomer {
     static nextTrapezoidal(data = {min:0, max:1}) {
         let l1 = (data.max - data.min)/4;
         let firstNumber = Randomer.nextDefaultRand({min:data.min, max:data.min + l1});
-        let secondNumber = Randomer.nextDefaultRand({min:data.min, max:data.max/2 + l1});
+        let secondNumber = Randomer.nextDefaultRand({min:data.min, max:data.max + l1*3});
         return firstNumber + secondNumber;
     }
 
@@ -42,23 +41,19 @@ class Randomer {
         let n = 12;
         let sigma = Math.sqrt(12 / n);
         let randStandard = Randomer.nextDefaultRand({min:0, max:1});
-
         for (let index = 0; index < n; index++)
         {
             randStandard += Randomer.nextDefaultRand({min:0, max:1});
         }
-
         return sigma * (randStandard - (n / 2));
     }
 
     static nextMuller(data = {min:0, max:1}) {
         let mx = 0;
         let sigma = 1;
-
         let firstNumber = 1 - Randomer.nextDefaultRand({min:0, max:1});
         let secondNumber = 1 - Randomer.nextDefaultRand({min:0, max:1});
         let randCalculatedNormal = Math.sqrt(-2 * Math.log(firstNumber)) * Math.sin(2 * Math.PI * secondNumber);
-
         return mx + sigma * randCalculatedNormal;
     }
 

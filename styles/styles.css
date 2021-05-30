@@ -12,6 +12,7 @@
     background-color: darkslategray;
     width: 100%;
     /*margin: 1px;*/
+    border: 1px solid black
 }
 
 #sells-canvas, #looses-canvas {
