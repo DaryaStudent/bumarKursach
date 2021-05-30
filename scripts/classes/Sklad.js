@@ -90,10 +90,18 @@ class Sklad{
             },
         }
 
+        let prodInfo = {
+            sells : [0,0,0,0,0,0],
+            looses : [0,0,0,0,0,0]
+        };
+
         for (let curDay = 1; curDay < this.days; curDay++){
             for (let i = 0; i < 6; i++){
                 sumSellsPerProduct[i].graphic.push(sumSellsPerProduct[i].graphic[curDay-1]+this.sellsPerDay[curDay][i])
                 sumLoosePerProduct[i].graphic.push(sumLoosePerProduct[i].graphic[curDay-1]+this.notSellsPerDay[curDay][i])
+
+                prodInfo.sells[i] += this.sellsPerDay[curDay][i];
+                prodInfo.looses[i] +=this.notSellsPerDay[curDay][i];
             }
         }
 
@@ -108,7 +116,10 @@ class Sklad{
             sumLooses += sumLoosePerProduct[i].graphic[this.days-1];
         }
 
+        console.log(prodInfo);
+
         return {
+            prodInfo: prodInfo,
             sumSells: sumSells,
             sumLosses: sumLooses,
             maxSellsY: maxSellsY,

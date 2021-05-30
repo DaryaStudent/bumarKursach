@@ -112,6 +112,12 @@ document.getElementById('canvas-btn').onclick = function () {
     console.log(obj)
 
     document.getElementById('coef').innerText = obj.sumSells/(obj.sumSells+obj.sumLosses)*100 + '%';
+    document.getElementById('prod1Eff').innerText = obj.prodInfo.sells[0]/(obj.prodInfo.sells[0]+obj.prodInfo.looses[0])*100 + '%';
+    document.getElementById('prod2Eff').innerText = obj.prodInfo.sells[1]/(obj.prodInfo.sells[1]+obj.prodInfo.looses[1])*100 + '%';
+    document.getElementById('prod3Eff').innerText = obj.prodInfo.sells[2]/(obj.prodInfo.sells[2]+obj.prodInfo.looses[2])*100 + '%';
+    document.getElementById('prod4Eff').innerText = obj.prodInfo.sells[3]/(obj.prodInfo.sells[3]+obj.prodInfo.looses[3])*100 + '%';
+    document.getElementById('prod5Eff').innerText = obj.prodInfo.sells[4]/(obj.prodInfo.sells[4]+obj.prodInfo.looses[4])*100 + '%';
+    document.getElementById('prod6Eff').innerText = obj.prodInfo.sells[5]/(obj.prodInfo.sells[5]+obj.prodInfo.looses[5])*100 + '%';
 
     SkladRenderer.setLayout(document.getElementById('sells-canvas'));
     SkladRenderer.render({

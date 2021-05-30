@@ -71,7 +71,7 @@
 <div id="sklad-wrapper" style="display: none">
     <div class="sklad-input-wrapper">
         <div>
-            <span>Порог дозакупки</span>
+            <span class="column-header">Порог дозакупки</span>
             <br>
             <label>Продукт 1:</label>
             <input id = 'minProd1' value="1000">
@@ -92,25 +92,25 @@
             <input id = 'minProd6' value="100">
         </div>
         <div>
-            <span>Дозакупка</span>
+            <span class="column-header">Дозакупка</span>
             <br>
             <label>Продукт 1:</label>
-            <input id = 'buyProd1' value="800"><div class="productMarker" style="background-color: #0000FF"></div>
+            <input id = 'buyProd1' value="800"><div class="productMarker" style="background-color: #0000FF"></div><span class="prod-eff" id="prod1Eff"></span>
             <br>
             <label>Продукт 2:</label>
-            <input id = 'buyProd2' value="450"><div class="productMarker" style="background-color: #FF0000"></div>
+            <input id = 'buyProd2' value="450"><div class="productMarker" style="background-color: #FF0000"></div><span class="prod-eff" id="prod2Eff"></span>
             <br>
             <label>Продукт 3:</label>
-            <input id = 'buyProd3' value="400"><div class="productMarker" style="background-color: #00FF00"></div>
+            <input id = 'buyProd3' value="400"><div class="productMarker" style="background-color: #00FF00"></div><span class="prod-eff" id="prod3Eff"></span>
             <br>
             <label>Продукт 4:</label>
-            <input id = 'buyProd4' value="200"><div class="productMarker" style="background-color: #FF00FF"></div>
+            <input id = 'buyProd4' value="200"><div class="productMarker" style="background-color: #FF00FF"></div><span class="prod-eff" id="prod4Eff"></span>
             <br>
             <label>Продукт 5:</label>
-            <input id = 'buyProd5' value="125"><div class="productMarker" style="background-color: #FFFF00"></div>
+            <input id = 'buyProd5' value="125"><div class="productMarker" style="background-color: #FFFF00"></div><span class="prod-eff" id="prod5Eff"></span>
             <br>
             <label>Продукт 6:</label>
-            <input id = 'buyProd6' value="100"><div class="productMarker" style="background-color: #000000"></div>
+            <input id = 'buyProd6' value="100"><div class="productMarker" style="background-color: #000000"></div><span class="prod-eff" id="prod6Eff"></span>
         </div>
     </div>
     <label for="skladFuncSelect">Функция распределения закупок:</label>
@@ -119,7 +119,7 @@
             <option value="Triangle">Треугольное</option>
     </select>
     <button id="canvas-btn">Рассчитать</button>
-    <div>Процент продаж: <span id="coef"></span></div>
+    <div>Процент продаж: <span class="prod-eff" id="coef"></span></div>
     <div class="canvases-wrapper">
         <div id="sells-canvas-wrapper">
             <div>

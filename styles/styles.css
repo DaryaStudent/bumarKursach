@@ -27,7 +27,7 @@
     margin-left: 0px;
 }
 
-.sklad-input-wrapper>div>span{
+.column-header{
     font-weight: 1000;
     font-size: 20px;
 }
@@ -45,12 +45,16 @@
     margin-left: 20px;
 }
 
+.prod-eff{
+    font-weight: 800;
+}
+
 .productMarker{
     display: inline-block;
     width: 15px;
     height: 15px;
     background-color: darkgrey;
-    margin: 0px 0px 0px 4px;
+    margin: 0px 10px 0px 4px;
 }
 
 .canvases-wrapper{
