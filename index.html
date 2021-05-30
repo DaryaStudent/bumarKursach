@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
@@ -138,16 +138,33 @@
 </div>
 
 <div id="proc-wrapper" style="display: none">
-123123131
+    <label>Длительность моделирования:</label>
+    <input id = 'simTime' value="100">
+    <br>
+    <label>Максимальное время работы клавиатуры:</label>
+    <input id = 'maxTimeKeyBoard' value="10">
+    <br>
+    <label>Максимальное время работы процессора:</label>
+    <input id = 'maxTimeCpu' value="10">
+    <br>
+    <label>Максимальное время работы монитора:</label>
+    <input id = 'maxTimeMonitor' value="10">
+    <br>
+    <label>Максимальное время работы принтера:</label>
+    <input id = 'maxTimePrint' value="10">
+    <br>
+    <button id="startSim">Запуск</button>
+
 </div>
 
 
 
-    <script src="Randomer.js"></script>
-    <script src="Sprending.js"></script>
-    <script src="Sklad.js"></script>
-    <script src="SkladRenderer.js"></script>
-    <script src="Renderer.js"></script>
-    <script src="script.js"></script>
+<script src="scripts/classes/Randomer.js"></script>
+<script src="scripts/classes/Sprending.js"></script>
+<script src="scripts/classes/ProcSim.js"></script>
+<script src="scripts/classes/Sklad.js"></script>
+<script src="scripts/classes/SkladRenderer.js"></script>
+<script src="scripts/classes/Renderer.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>

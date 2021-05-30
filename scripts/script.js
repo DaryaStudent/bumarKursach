@@ -139,31 +139,15 @@ document.getElementById('canvas-btn').onclick = function () {
         graphics : obj.graphicsLooses,
     });
 }
-//
-// let graphics = {
-//     1 : {
-//         graphic : [1,2,3,4,5],
-//         color : '#0000FF'
-//     },
-//     2 : {
-//         graphic : [2,3,4,5,6],
-//         color : '#FF0000'
-//     },
-//     3 : {
-//         graphic : [3,4,5,6,7],
-//         color : '#00FF00'
-//     },
-//     4 : {
-//         graphic : [4,5,6,7,8],
-//         color : '#FF00FF'
-//     },
-//     5 : {
-//         graphic : [5,6,7,8,9],
-//         color : '#000000'
-//     },
-// }
-// let obj = {
-//     maxY: 9,
-//     maxX: 5,
-//     graphics : graphics
-// }
+
+document.getElementById('startSim').onclick = function() {
+    let maxTimeKeyBoard = document.getElementById('maxTimeKeyBoard').value;
+    let maxTimeCpu = document.getElementById('maxTimeCpu').value;
+    let maxTimePrint = document.getElementById('maxTimePrint').value;
+    let maxTimeMonitor = document.getElementById('maxTimeMonitor').value;
+    let simTime = document.getElementById('simTime').value;
+
+    let res = ProcSim.start(maxTimeKeyBoard, maxTimeCpu, maxTimePrint, maxTimeMonitor, simTime)
+
+    console.log(res);
+}
